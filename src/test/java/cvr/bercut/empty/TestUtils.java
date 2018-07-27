@@ -7,8 +7,10 @@ import java.sql.Statement;
 
 public class TestUtils {
 
-    public static String createUserSQL(long id, String name, String parole) {
+    private static String createUserSQL(long id, String name, String parole) {
         String ret = "insert into admin.base_object(id,name,description,dtype) \n";
+//        String ret = "insert into admin.base_object(id,name,description) \n";
+
         ret += "values(%d,'%s','','User'); \n";
         ret += "\n";
         ret += "insert into admin.user_object(id,role_id,parole)\n";

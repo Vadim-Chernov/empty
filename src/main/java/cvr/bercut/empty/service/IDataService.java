@@ -10,10 +10,8 @@ public interface IDataService {
 
     List<BaseObject> addDefaultObjects();
 
-    String fetchDataByLastName(String lastName);
-
     List<BaseObject> findAll();
 
     BaseObject findById(long id);
-    
+
 }

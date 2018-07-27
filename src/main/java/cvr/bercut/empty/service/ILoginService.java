@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 @Service
 public interface ILoginService {
 
-    User login();
+    User login(String name,String parole);
 
-    public void setName(String id);
-
-    public void setParole(String pwd);
+//    public void setName(String id);
+//
+//    public void setParole(String pwd);
 }

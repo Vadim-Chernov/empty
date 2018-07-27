@@ -1,10 +1,15 @@
 package cvr.bercut.lib.controls;
 
-import com.vaadin.ui.*;
+
+import com.vaadin.ui.Alignment;
+import com.vaadin.ui.Component;
+import com.vaadin.ui.FormLayout;
+import com.vaadin.ui.GridLayout;
+import com.vaadin.ui.AbstractLayout;
+
 import cvr.bercut.lib.forms.QCell;
 
 import java.io.Serializable;
-import java.util.List;
 
 public interface IControl extends Serializable {
 
@@ -39,7 +44,6 @@ public interface IControl extends Serializable {
         ctx.addComponent((Component) self());
     }
 
-
     static IControl createCo(QCell cell) {
         IControl newInstance = null;
         Class<? extends IControl> control = cell.control();
@@ -57,6 +61,4 @@ public interface IControl extends Serializable {
         }
         return newInstance;
     }
-    
-
 }

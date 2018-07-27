@@ -13,22 +13,28 @@ import java.util.Optional;
 
 @Service
 public class DataService implements IDataService {
+    private String defUserName1 = "Федя";
+    private String defUserName2 = "Петя";
+
+    private String defUserRole1 = "admin";
+    private String defUserRole2 = "user";
+    private String defParole = "1";
 
     @Autowired
     private BaseObjectRepository baseObjectRepository;
 
     @Override
     public List<BaseObject> addDefaultObjects() {
-        baseObjectRepository.deleteAll();
-        User u1 = baseObjectRepository.save(new User("Петя", "11"));
-        User u2 = baseObjectRepository.save(new User("Федя", "22"));
+//        baseObjectRepository.deleteAll();
+        User u1 = baseObjectRepository.save(new User(defUserName1, defParole));
+        User u2 = baseObjectRepository.save(new User(defUserName2, defParole));
         Role r1 = baseObjectRepository.save(new Role());
-        r1.setName("Admin");
+        r1.setName(defUserRole1);
         Role r2 = baseObjectRepository.save(new Role());
-        r2.setName("user");
+        r2.setName(defUserRole2);
 
         u2.setRole(r2);
-        List<BaseObject> list = new ArrayList();
+        ArrayList list = new ArrayList();
         r2.setDescription("Пользователь " + u2.getName());
         list.add(u1);
         list.add(u2);
@@ -49,16 +55,6 @@ public class DataService implements IDataService {
     public BaseObject findById(long id) {
         final Optional<BaseObject> byId = baseObjectRepository.findById(id);
         BaseObject result = byId.get();
-        return result;
-    }
-
-    @Override
-    public String fetchDataByLastName(String lastName) {
-        String result = "";
-
-        for (BaseObject cust : baseObjectRepository.findByName(lastName)) {
-            result += cust.toString() + "<br>";
-        }
         return result;
     }
 }

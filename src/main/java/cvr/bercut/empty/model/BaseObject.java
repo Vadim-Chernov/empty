@@ -11,13 +11,10 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-//@ToString()
 
 @Entity
 @Table(name = "base_object", schema = Constant.SYS_SCHEMA)
 @Inheritance(strategy = InheritanceType.JOINED)
-//@MappedSuperclass
-@DiscriminatorColumn
 public class BaseObject implements Serializable {
 
     @Id
@@ -30,9 +27,7 @@ public class BaseObject implements Serializable {
     @Column(name = "description")
     private String description;
 
-//    @Column(name = "DTYPE",length = Constant.LENGHT_NAME)
-//    private String dtype;
-    public String getDtype(){
-        return this.getClass().getTypeName();
-    }
+//    public String getDtype(){
+//        return this.getClass().getTypeName();
+//    }
 }

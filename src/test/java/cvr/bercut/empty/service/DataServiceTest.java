@@ -1,34 +1,31 @@
 package cvr.bercut.empty.service;
 
 import com.google.common.collect.ImmutableList;
-import cvr.bercut.empty.TestUtils;
 import cvr.bercut.empty.model.BaseObject;
+import cvr.bercut.empty.model.User;
+import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Random;
 
 import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
+@Ignore
+public class DataServiceTest extends BaseServiceTest {
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
-public class DataServiceTest {
     @Autowired
-    DataService service;
+    private DataService service;
 
-    private TestUtils utils = new TestUtils();
-
-
+    /*  DataService     */
     @Test
     public void addDefaultObjects() {
         service.addDefaultObjects();
@@ -51,13 +48,43 @@ public class DataServiceTest {
         utils.createUser(102, "erevan", "1");
         final List<BaseObject> all = service.findAll();
         final long l1 = all.size() - l;
-        assertTrue(l1==3);
+        assertEquals(3, l1);
     }
 
     @Test
     public void findById() throws SQLException {
         utils.createUser(1000, "ivan", "1");
-        final BaseObject byId = service.findById(1000l);
-        assertTrue(byId.getName().equals("ivan"));
+        final BaseObject byId = service.findById(1000L);
+        assertEquals("ivan", byId.getName());
     }
+
+    /*  DataService     */
+///////////////////////////////////////////////////////////////
+    /*  LoginService    */
+    @Autowired
+    private LoginService loginService;
+
+    @Test
+    public void login() throws SQLException {
+        String name = "ivan";
+        String parole = "1";
+        Random random = new Random();
+        Long nextInt = random.nextLong();
+        System.out.println("nextInt = " + nextInt);
+        utils.createUser(nextInt, name, parole);
+        final User user = loginService.login(name, parole);
+
+        assertEquals(name, user.getName());
+        assertEquals(parole,user.getParole());
+
+        nextInt = random.nextLong();
+        String fakeName = nextInt.toString();
+        nextInt = random.nextLong();
+        String fakeParole = nextInt.toString();
+        final User faceUser = loginService.login(fakeName, fakeParole);
+        assertNull(faceUser);
+    }
+///////////////////////////////////////////////////////////////
+
+
 }

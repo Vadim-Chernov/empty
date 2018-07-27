@@ -6,10 +6,11 @@ import com.vaadin.spring.annotation.SpringUI;
 import com.vaadin.ui.UI;
 import cvr.bercut.empty.model.BaseObject;
 import cvr.bercut.empty.service.DataService;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @SpringUI
 @Theme("valo")
@@ -32,10 +33,10 @@ public class StandardUI extends UI {
         }
     }
 
-    public void createDefObjects() throws Exception {
+    private void createDefObjects() /*throws Exception*/ {
         List<BaseObject> addedObjects = dataService.addDefaultObjects();
         addedObjects.forEach((bo) -> {
-            System.out.println(bo.getClass().getSimpleName() + " ==>  " + bo.getName() + " ==> " + bo.getDtype());
+            System.out.println(bo.getClass().getSimpleName() + " ==>  " + bo.getName() + " ==> " + bo.getClass().getSimpleName());
         });
     }
     

@@ -35,10 +35,10 @@ import cvr.bercut.lib.uiutils.Say;
 
 public class LoginDlg extends AWindow implements IFrame {
 
-    public static final String ID = "id";
-    public static final String PASSWORD = "password";
-    public static final String BTN_OK = "btnOk";
-    public static final String BTN_CANCEL = "btnCancel";
+    static final String ID = "id";
+    static final String PASSWORD = "password";
+    static final String BTN_OK = "btnOk";
+    static final String BTN_CANCEL = "btnCancel";
 
     private final AButton btnOk;
     private final AButton btnCancel;
@@ -48,7 +48,6 @@ public class LoginDlg extends AWindow implements IFrame {
 
     private LoginService loginService;
 
-    @SuppressWarnings("OverridableMethodCallInConstructor")
     public LoginDlg(LoginService loginService) {
         super(LoginDlg.class.getAnnotation(QFrame.class));
         this.loginService = loginService;
@@ -76,13 +75,11 @@ public class LoginDlg extends AWindow implements IFrame {
         String id = txtId.getValue();
         String pwd = pswField.getValue();
         System.out.println("Проверка id = " + id + "  password = " + pwd);
-        loginService.setName(id);
-        loginService.setParole(pwd);
-        user = loginService.login();
+        user = loginService.login(id, pwd);
         if (user == null)
             Say.sayWarning("Не верное и мя или пароль");
         else {
-            Say.sayWarning("Поздравляю!","Пользователь [" + user + "] вошел в систему");
+            Say.sayWarning("Поздравляю!", "Пользователь [" + user + "] вошел в систему");
             close();
         }
     }
