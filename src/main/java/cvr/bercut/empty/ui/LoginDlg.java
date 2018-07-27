@@ -77,7 +77,7 @@ public class LoginDlg extends AWindow implements IFrame {
         String pwd = pswField.getValue();
         System.out.println("Проверка id = " + id + "  password = " + pwd);
         loginService.setName(id);
-        loginService.setPassword(pwd);
+        loginService.setParole(pwd);
         user = loginService.login();
         if (user == null)
             Say.sayWarning("Не верное и мя или пароль");

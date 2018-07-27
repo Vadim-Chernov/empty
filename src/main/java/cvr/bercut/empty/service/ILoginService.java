@@ -10,5 +10,5 @@ public interface ILoginService {
 
     public void setName(String id);
 
-    public void setPassword(String pwd);
+    public void setParole(String pwd);
 }

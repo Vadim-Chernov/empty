@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DataService implements IDataService {
@@ -45,9 +46,9 @@ public class DataService implements IDataService {
     }
 
     @Override
-    public String findById(long id) {
-        String result = "";
-        result = baseObjectRepository.findById(id).toString();
+    public BaseObject findById(long id) {
+        final Optional<BaseObject> byId = baseObjectRepository.findById(id);
+        BaseObject result = byId.get();
         return result;
     }
 

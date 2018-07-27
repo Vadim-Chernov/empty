@@ -30,14 +30,14 @@ public class User extends BaseObject {
 
 
     @Column(length = Constant.LENGHT_PWD)
-    private String password;
+    private String parole;
 
     @ManyToOne
     private Role role;
 
-    public User(String name, String password) {
+    public User(String name, String parole) {
         setName(name);
-        setPassword(password);
+        setParole(parole);
     }
 
     @Override

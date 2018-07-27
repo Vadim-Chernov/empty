@@ -10,5 +10,5 @@ import org.springframework.stereotype.Repository;
 @EntityScan(basePackageClasses = User.class)
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    User findByPasswordAndName(String password, String name);
+    User findByParoleAndName(String password, String name);
 }

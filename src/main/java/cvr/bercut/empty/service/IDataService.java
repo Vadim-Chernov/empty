@@ -1,8 +1,9 @@
 package cvr.bercut.empty.service;
 
 import cvr.bercut.empty.model.BaseObject;
-import java.util.List;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public interface IDataService {
@@ -13,6 +14,6 @@ public interface IDataService {
 
     List<BaseObject> findAll();
 
-    String findById(long id);
+    BaseObject findById(long id);
     
 }

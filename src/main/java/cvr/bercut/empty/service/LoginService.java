@@ -1,11 +1,11 @@
 package cvr.bercut.empty.service;
 
 import cvr.bercut.empty.model.User;
-import cvr.bercut.empty.repo.BaseObjectRepository;
-import javax.annotation.PostConstruct;
+import cvr.bercut.empty.repo.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import cvr.bercut.empty.repo.UserRepository;
+
+import javax.annotation.PostConstruct;
 
 
 @Service
@@ -15,7 +15,7 @@ public class LoginService implements ILoginService {
     private UserRepository repo;
     
     private String name;
-    private String password;
+    private String parole;
     private User user;
 
     public LoginService() {
@@ -28,8 +28,8 @@ public class LoginService implements ILoginService {
     }
 
     @Override
-    public void setPassword(String password) {
-        this.password = password;
+    public void setParole(String parole) {
+        this.parole = parole;
     }
 
     @PostConstruct
@@ -38,9 +38,9 @@ public class LoginService implements ILoginService {
     }
     @Override
     public User login() {
-        if (password == null || name == null)
+        if (parole == null || name == null)
             return null;
-        user = repo.findByPasswordAndName(password, name);
+        user = repo.findByParoleAndName(parole, name);
         return user;
     }
 
