@@ -11,6 +11,7 @@ import cvr.bercut.lib.controls.APasswordField;
 import cvr.bercut.lib.controls.ATextField;
 import cvr.bercut.lib.forms.*;
 import cvr.bercut.lib.uiutils.Say;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @QFrame(title = "ВХОД В СИСТЕМУ", height = "40%",
         rows = {
@@ -46,11 +47,12 @@ public class LoginDlg extends AWindow implements IFrame {
     private final APasswordField pswField;
     private User user;
 
+    @Autowired
     private LoginService loginService;
 
-    public LoginDlg(LoginService loginService) {
+    public LoginDlg() {
         super(LoginDlg.class.getAnnotation(QFrame.class));
-        this.loginService = loginService;
+//        this.loginService = loginService;
         btnCancel = (AButton) getControl(BTN_CANCEL);
         btnOk = (AButton) getControl(BTN_OK);
         txtId = (ATextField) getControl(ID);

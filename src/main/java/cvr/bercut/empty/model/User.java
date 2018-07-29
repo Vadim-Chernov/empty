@@ -10,10 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author chernov
@@ -21,6 +18,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "user_object", schema = Constant.SYS_SCHEMA)
 //@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@DiscriminatorValue("User")
+
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -42,6 +42,6 @@ public class User extends BaseObject {
 
     @Override
     public String toString() {
-        return getName();
+        return getName() + " " + role;
     }
 }

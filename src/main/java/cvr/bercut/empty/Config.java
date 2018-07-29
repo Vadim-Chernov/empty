@@ -18,8 +18,8 @@ public class Config {
     }
 
     @Bean
-    public LoginDlg loginDlg(LoginService loginService){
-        return new LoginDlg(loginService);
+    public LoginDlg loginDlg(){
+        return new LoginDlg();
     }
     
     @Bean

@@ -8,8 +8,6 @@ import java.util.List;
 @Service
 public interface IDataService {
 
-    List<BaseObject> addDefaultObjects();
-
     List<BaseObject> findAll();
 
     BaseObject findById(long id);

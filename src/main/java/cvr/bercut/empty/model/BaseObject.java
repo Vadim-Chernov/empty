@@ -15,6 +15,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "base_object", schema = Constant.SYS_SCHEMA)
 @Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn()
 public class BaseObject implements Serializable {
 
     @Id

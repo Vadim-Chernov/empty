@@ -1,6 +1,5 @@
 package cvr.bercut.empty.service;
 
-import com.google.common.collect.ImmutableList;
 import cvr.bercut.empty.model.BaseObject;
 import cvr.bercut.empty.model.User;
 import org.junit.Ignore;
@@ -11,11 +10,6 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Random;
 
-import static java.util.stream.Collectors.collectingAndThen;
-import static java.util.stream.Collectors.toList;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
@@ -24,20 +18,6 @@ public class DataServiceTest extends BaseServiceTest {
 
     @Autowired
     private DataService service;
-
-    /*  DataService     */
-    @Test
-    public void addDefaultObjects() {
-        service.addDefaultObjects();
-
-        List<BaseObject> list = service.findAll();
-        assertThat(list.size(), is(4));
-        List<Long> actualList = list.stream()
-                .map(bo -> bo.getId())
-                .collect(collectingAndThen(toList(), ImmutableList::copyOf));
-        assertThat(actualList, containsInAnyOrder(1L, 2L, 3L, 4L));
-
-    }
 
 
     @Test
@@ -88,3 +68,18 @@ public class DataServiceTest extends BaseServiceTest {
 
 
 }
+
+//    /*  DataService     */
+//    @Test
+//    public void addDefaultObjects() {
+//        service.addFakeObjects();
+//
+//        List<BaseObject> list = service.findAll();
+//        assertThat(list.size(), is(4));
+//        List<Long> actualList = list.stream()
+//                .map(bo -> bo.getId())
+//                .collect(collectingAndThen(toList(), ImmutableList::copyOf));
+//        assertThat(actualList, containsInAnyOrder(1L, 2L, 3L, 4L));
+//
+//    }
+

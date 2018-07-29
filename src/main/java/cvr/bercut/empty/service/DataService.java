@@ -23,27 +23,6 @@ public class DataService implements IDataService {
     @Autowired
     private BaseObjectRepository baseObjectRepository;
 
-    @Override
-    public List<BaseObject> addDefaultObjects() {
-//        baseObjectRepository.deleteAll();
-        User u1 = baseObjectRepository.save(new User(defUserName1, defParole));
-        User u2 = baseObjectRepository.save(new User(defUserName2, defParole));
-        Role r1 = baseObjectRepository.save(new Role());
-        r1.setName(defUserRole1);
-        Role r2 = baseObjectRepository.save(new Role());
-        r2.setName(defUserRole2);
-
-        u2.setRole(r2);
-        ArrayList list = new ArrayList();
-        r2.setDescription("Пользователь " + u2.getName());
-        list.add(u1);
-        list.add(u2);
-        list.add(r1);
-        list.add(r2);
-        List<BaseObject> savedAll = baseObjectRepository.saveAll(list);
-        return savedAll;
-    }
-
 
     @Override
     public List<BaseObject> findAll() {
@@ -57,4 +36,40 @@ public class DataService implements IDataService {
         BaseObject result = byId.get();
         return result;
     }
+
+// Фейковые объекты
+    public void addFakeObjects() {
+        if(fakeObjectsExists())
+            return ;
+        User u1 = baseObjectRepository.save(new User(defUserName1, defParole));
+        User u2 = baseObjectRepository.save(new User(defUserName2, defParole));
+        Role r1 = baseObjectRepository.save(new Role());
+        r1.setName(defUserRole1);
+        Role r2 = baseObjectRepository.save(new Role());
+        r2.setName(defUserRole2);
+        u1.setRole(r1);
+        u2.setRole(r2);
+        ArrayList list = new ArrayList();
+        r2.setDescription("Пользователь " + u2.getName());
+        list.add(u1);
+        list.add(u2);
+        list.add(r1);
+        list.add(r2);
+        List<BaseObject> savedAll = baseObjectRepository.saveAll(list);
+        savedAll.stream().forEach(System.out::println);
+//        return savedAll;
+    }
+
+    private boolean fakeObjectsExists() {
+        final List<BaseObject> list = baseObjectRepository.findByName(defUserName1);
+        for (BaseObject bo : list) {
+            if (bo instanceof User) {
+                User user = (User) bo;
+                if (defParole.equals(user.getParole()))
+                    return true;
+            }
+        }
+        return false;
+    }
+
 }
