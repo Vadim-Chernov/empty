@@ -7,9 +7,6 @@ import com.vaadin.ui.UI;
 import cvr.bercut.empty.service.DataService;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 @SpringUI
 @Theme("valo")
 public class StandardUI extends UI {
@@ -17,20 +14,20 @@ public class StandardUI extends UI {
     @Autowired
     private DataService dataService;
 
-//    @Autowired
+    @Autowired
     private LoginDlg loginDlg;
-    
+
+    @Autowired
+    private MainFrame mainFrame;
+
     @Override
     protected void init(VaadinRequest request) {
-        try {
-
-            dataService.addFakeObjects();//     <- Удалить в последствии
-            loginDlg = new LoginDlg();
-            loginDlg.center();
-            addWindow(loginDlg);
-        } catch (Exception ex) {
-            Logger.getLogger(StandardUI.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        dataService.addFakeObjects();//     <- Удалить в последствии
+//        mainFrame = new MainFrame();
+        setContent(mainFrame);
+//        loginDlg = new LoginDlg();
+        loginDlg.center();
+        addWindow(loginDlg);
     }
 
 }

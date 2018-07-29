@@ -13,6 +13,8 @@ import cvr.bercut.lib.forms.*;
 import cvr.bercut.lib.uiutils.Say;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import static cvr.bercut.empty.Constant.WRONG_LOGIN;
+
 @QFrame(title = "ВХОД В СИСТЕМУ", height = "40%",
         rows = {
                 @QRow(cells = {
@@ -48,11 +50,15 @@ public class LoginDlg extends AWindow implements IFrame {
     private User user;
 
     @Autowired
-    private LoginService loginService;
+    LoginService loginService;
+
+    @Autowired
+    MainFrame mainFrame;
 
     public LoginDlg() {
         super(LoginDlg.class.getAnnotation(QFrame.class));
-//        this.loginService = loginService;
+        setModal(true);
+
         btnCancel = (AButton) getControl(BTN_CANCEL);
         btnOk = (AButton) getControl(BTN_OK);
         txtId = (ATextField) getControl(ID);
@@ -79,9 +85,10 @@ public class LoginDlg extends AWindow implements IFrame {
         System.out.println("Проверка id = " + id + "  password = " + pwd);
         user = loginService.login(id, pwd);
         if (user == null)
-            Say.sayWarning("Не верное и мя или пароль");
+            Say.sayWarning(WRONG_LOGIN);
         else {
             Say.sayWarning("Поздравляю!", "Пользователь [" + user + "] вошел в систему");
+            mainFrame.buildMenu();
             close();
         }
     }

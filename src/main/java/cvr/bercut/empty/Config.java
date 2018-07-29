@@ -5,6 +5,7 @@ import com.vaadin.spring.server.SpringVaadinServlet;
 import cvr.bercut.empty.service.DataService;
 import cvr.bercut.empty.service.LoginService;
 import cvr.bercut.empty.ui.LoginDlg;
+import cvr.bercut.empty.ui.MainFrame;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -27,6 +28,12 @@ public class Config {
         DataService dataService = new DataService();
         return dataService;
     }
+
+    @Bean
+    MainFrame mainFrame(){
+        return new MainFrame();
+    }
+
 
     @Bean
     LoginService loginService() {
