@@ -8,7 +8,7 @@ public interface ILoginService {
 
     User login(String name,String parole);
 
-//    public void setName(String id);
-//
-//    public void setParole(String pwd);
+    boolean isUserSignedIn();
+
+    String getPrincipalName();
 }
