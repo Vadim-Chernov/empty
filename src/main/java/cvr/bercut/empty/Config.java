@@ -34,7 +34,11 @@ public class Config {
         return new MainFrame();
     }
 
-
+//    @Bean
+//    KMainFrame kmainFrame(){
+//        return new KMainFrame();
+//    }
+//
     @Bean
     LoginService loginService() {
         LoginService loginService = new LoginService();

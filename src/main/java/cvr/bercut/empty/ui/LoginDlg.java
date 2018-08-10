@@ -68,6 +68,9 @@ public class LoginDlg extends AWindow implements IFrame {
         pswField.addValueChangeListener((HasValue.ValueChangeListener) event -> enableOkBtn());
         btnCancel.addClickListener((ClickListener) event -> close());
         btnOk.addClickListener((ClickListener) event -> checkLoginInfo());
+
+        txtId.setVal("Петя");
+        pswField.setVal("1");
     }
 
     private void enableOkBtn() {
