@@ -18,19 +18,8 @@ public class MainFrame extends VerticalLayout {
         final QSecurity ann = MainFrame.class.getAnnotation(QSecurity.class);
         if (ann == null)
             return;
-        final Class<? extends IMenu> clazz = ann.menu();
-        if (clazz == null)
-            return;
-        final QMenu menu = clazz.getAnnotation(QMenu.class);
-        final QMenuBar[] bars = menu.bars();
-        for (QMenuBar mb : bars) {
-            final QMenuItem[] items = mb.items();
-            final MenuBar.MenuItem menuItem = menuBar.addItem(mb.caption());
-            if (items.length > 0) {
-                for (int i = 0; i < items.length; i++)
-                    menuItem.addItem(items[i].caption());
-            }
-        }
+        MenuBuilder builder = new MenuBuilder();
+        builder.makeMenuBar(ann,menuBar);
     }
 
 }
