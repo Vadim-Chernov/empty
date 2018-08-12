@@ -1,6 +1,4 @@
-package cvr.bercut.lib.security;
-
-import cvr.bercut.lib.menu.IMenu;
+package cvr.bercut.lib.menu;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -9,7 +7,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-
-public @interface QSecurity {
-    Class<? extends IMenu> menu() default IMenu.class;
+public @interface QMenu {
+    QMenuBar[] bars() default {};
 }

@@ -62,6 +62,7 @@ public class DataService implements IDataService {
 
     private boolean fakeObjectsExists() {
         final List<BaseObject> list = baseObjectRepository.findByName(defUserName1);
+        final List<BaseObject> list1 = baseObjectRepository.All();
         for (BaseObject bo : list) {
             if (bo instanceof User) {
                 User user = (User) bo;

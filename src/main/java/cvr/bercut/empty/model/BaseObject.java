@@ -16,6 +16,8 @@ import java.io.Serializable;
 @Table(name = "base_object", schema = Constant.SYS_SCHEMA)
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn()
+@NamedQuery(name = "BaseObject.All",
+        query = "SELECT e FROM BaseObject e ")
 public class BaseObject implements Serializable {
 
     @Id

@@ -14,6 +14,17 @@ public class GMenuItem {
         this.caption = item.caption;
         this.icon = item.icon;
         this.items = item.items;
+    }
 
+    public boolean hasChildren() {
+        if (items == null)
+            return false;
+        return items.length > 0;
+    }
+
+    public void setItems(GMenuItem item, GMenuItem[] items) {
+        this.caption = item.caption;
+        this.icon = item.icon;
+        this.items = items;
     }
 }

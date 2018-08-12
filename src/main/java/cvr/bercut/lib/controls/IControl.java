@@ -23,7 +23,7 @@ public interface IControl extends Serializable {
 
     String getCaption();
 
-    default IControl create(QCell cell){
+    default IControl create(QCell cell) {
         return createCo(cell);
     }
 

@@ -16,6 +16,6 @@ public @interface QRow {
 
 //    String endText() default "";
 
-    public boolean captionOnLeft() default false;;
+    public boolean captionOnLeft() default false;
 
 }
