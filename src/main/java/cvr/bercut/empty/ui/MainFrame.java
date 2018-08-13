@@ -18,8 +18,8 @@ public class MainFrame extends VerticalLayout {
         final QSecurity ann = MainFrame.class.getAnnotation(QSecurity.class);
         if (ann == null)
             return;
-        MenuBuilder builder = new MenuBuilder();
+        MenuBuilder<MenuBar,MenuBar.MenuItem> builder = new MenuBuilder<>();
+        menuBar.getItems().clear();
         builder.makeMenuBar(ann,menuBar);
     }
-
 }

@@ -5,5 +5,6 @@ public @interface QMenuItem1 {
     String icon() default "";
     String method() default "";
     QMenuItem2[] items() default {};
+    MenuElementType type() default MenuElementType.ITEM;
 
 }
