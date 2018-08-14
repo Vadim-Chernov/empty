@@ -17,6 +17,7 @@ public class MainFrame extends VerticalLayout implements IFrame {
     }
 
     void buildMenu() {
+        this.setVisible(true);
         final QSecurity ann = MainFrame.class.getAnnotation(QSecurity.class);
         if (ann == null)
             return;
@@ -26,9 +27,14 @@ public class MainFrame extends VerticalLayout implements IFrame {
     }
 
     @QSecurity
-    private MenuBar.Command close = (MenuBar.Command) selectedItem -> getUI().close();
+    private MenuBar.Command close = (MenuBar.Command) selectedItem -> exit();
     private MenuBar.Command say = (MenuBar.Command) selectedItem -> Say.warning("Привет");
 
+    private void exit(){
+        this.setVisible(false);
+        getUI().close();
+    }
+    
     @Override
     public VerticalLayout getMainLayout() {
         return this;

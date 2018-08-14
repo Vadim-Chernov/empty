@@ -17,7 +17,7 @@ import cvr.bercut.lib.menu.*;
                                 }
                         ),
                         @QMenuItem(id = "5", caption = "111", type = MenuElementType.SEPARATOR),
-                        @QMenuItem(id = "6", caption = "Выход", method = "say")}
+                        @QMenuItem(id = "6", caption = "Выход", method = "close")}
         )
         })
 class MainFrameMenu implements IMenu {
