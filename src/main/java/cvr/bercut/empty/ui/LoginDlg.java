@@ -88,9 +88,9 @@ public class LoginDlg extends AWindow implements IFrame {
         System.out.println("Проверка id = " + id + "  password = " + pwd);
         user = loginService.login(id, pwd);
         if (user == null)
-            Say.sayWarning(WRONG_LOGIN);
+            Say.warning(WRONG_LOGIN);
         else {
-            Say.sayWarning("Поздравляю!", "Пользователь [" + user + "] вошел в систему");
+            Say.warning("Поздравляю!", "Пользователь [" + user + "] вошел в систему");
             mainFrame.buildMenu();
             close();
         }

@@ -6,7 +6,7 @@ import com.vaadin.ui.Notification;
 
 public class Say {
 
-    public static void sayWarning(String message) {
+    public static void warning(String message) {
         // Notification with default settings for a warning
         Notification notif = new Notification(
                 "Предупреждение",
@@ -17,7 +17,7 @@ public class Say {
         notif.show(Page.getCurrent());
     }
 
-    public static void sayWarning(String message,String caption) {
+    public static void warning(String message, String caption) {
         // Notification with default settings for a warning
         Notification notif = new Notification(
                 caption,

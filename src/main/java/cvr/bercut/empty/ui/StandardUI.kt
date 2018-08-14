@@ -8,7 +8,7 @@ import cvr.bercut.empty.service.DataService
 import org.springframework.beans.factory.annotation.Autowired
 
 @SpringUI
-@Theme("valo")
+@Theme("mytheme")
 class StandardUI : UI() {
 
     @Autowired
