@@ -12,4 +12,6 @@ public interface IDataService {
 
     BaseObject findById(long id);
 
+    public void addFakeObjects();
+
 }

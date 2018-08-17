@@ -5,6 +5,7 @@ import com.vaadin.server.VaadinRequest
 import com.vaadin.spring.annotation.SpringUI
 import com.vaadin.ui.UI
 import cvr.bercut.empty.service.DataService
+import cvr.bercut.empty.service.IDataService
 import org.springframework.beans.factory.annotation.Autowired
 
 @SpringUI
@@ -12,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired
 class StandardUI : UI() {
 
     @Autowired
-    private val dataService: DataService? = null
+    private val dataService: IDataService? = null
 
     @Autowired
     private val loginDlg: LoginDlg? = null
@@ -23,7 +24,7 @@ class StandardUI : UI() {
     override fun init(request: VaadinRequest) {
         dataService!!.addFakeObjects()//     <- Удалить в последствии
         content = mainFrame
-        loginDlg!!.center()
+//        loginDlg!!.center()
         addWindow(loginDlg)
     }
 

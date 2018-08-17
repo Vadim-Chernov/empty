@@ -38,6 +38,7 @@ public class DataService implements IDataService {
     }
 
 // Фейковые объекты
+    @Override
     public void addFakeObjects() {
         if(fakeObjectsExists())
             return ;
@@ -60,6 +61,7 @@ public class DataService implements IDataService {
 //        return savedAll;
     }
 
+//    @Override
     private boolean fakeObjectsExists() {
         final List<BaseObject> list = baseObjectRepository.findByName(defUserName1);
         final List<BaseObject> list1 = baseObjectRepository.All();

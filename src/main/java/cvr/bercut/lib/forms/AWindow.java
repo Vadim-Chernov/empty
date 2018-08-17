@@ -3,7 +3,6 @@ package cvr.bercut.lib.forms;
 
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.Window;
-import cvr.bercut.empty.ui.LoginDlg;
 import cvr.bercut.lib.controls.IControl;
 
 public class AWindow extends Window implements IFrame{
@@ -18,6 +17,7 @@ public class AWindow extends Window implements IFrame{
         }
         this.setContent(layout);
         createWindow();
+        center();
     }
 
     private void createWindow() {
