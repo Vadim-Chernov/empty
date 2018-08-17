@@ -2,6 +2,8 @@ package cvr.bercut.empty.ui;
 
 import cvr.bercut.lib.menu.*;
 
+
+// Структура меню
 @QMenu(id = "MainMenu",
         bars = {@QMenuBar(id = "bar1", caption = "File",
                 items = {

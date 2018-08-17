@@ -19,6 +19,7 @@ public abstract class AbstractMenuBuilder<TB, TI> {
     private Class<? extends IMenu> clazz;
 
     public void makeMenuBar(final QSecurity ann,final TB menuBar) {
+
         nodes.clear();
         if (ann == null)
             return;

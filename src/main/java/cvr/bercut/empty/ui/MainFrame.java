@@ -7,6 +7,8 @@ import cvr.bercut.lib.menu.*;
 import cvr.bercut.lib.security.QSecurity;
 import cvr.bercut.lib.uiutils.Say;
 
+
+// Главная форма
 @QSecurity(menu = MainFrameMenu.class)
 public class MainFrame extends VerticalLayout implements IFrame {
     private MenuBar menuBar = new MenuBar();
