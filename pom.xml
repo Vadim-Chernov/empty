@@ -87,11 +87,11 @@
             <artifactId>hibernate-entitymanager</artifactId>
             <version>4.3.1.Final</version>
         </dependency>
-        <dependency>
-            <groupId>unknown.binary</groupId>
-            <artifactId>postgresql-9.4.1209</artifactId>
-            <version>SNAPSHOT</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>unknown.binary</groupId>-->
+<!--            <artifactId>postgresql-9.4.1209</artifactId>-->
+<!--            <version>SNAPSHOT</version>-->
+<!--        </dependency>-->
 <!--        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
