@@ -1,5 +1,7 @@
 package com.example.demo.services;
 
+import lombok.NonNull;
+
 public interface PDFConvertor {
-    String convert(String str);
+    String convert(@NonNull String str);
 }

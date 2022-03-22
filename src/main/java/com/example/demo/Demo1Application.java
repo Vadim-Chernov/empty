@@ -30,7 +30,7 @@ public class Demo1Application {
      */
     @Bean
     RouterFunction<ServerResponse> strToPdf() {
-        return route(GET("/pdf/{str}"), request -> ok().body(fromValue("Convert STR : "
+        return route(GET("/pdf/{str}"), request -> ok().body(fromValue("Смотри PDF файл : "
                 + convertor.convert(request.pathVariable("str")))));
     }
 }
